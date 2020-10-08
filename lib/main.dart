@@ -1,4 +1,4 @@
-import 'dart:html';
+
 
 import 'package:flutter/material.dart';
 
@@ -30,9 +30,9 @@ class TareaState extends State<Tarea>{
 
   click(){
     print("click");
-    setState(() {
+    setState( () {
       tst['done'] = !tst['done'];
-    }
+    };
   }
 
   @override
@@ -46,8 +46,9 @@ class TareaState extends State<Tarea>{
         else
           Icon(Icons.clear),
         FlatButton(
-          onPressed: click,
-          child: Text(""+tst['nombre'])),
+          onPressed: (){_click;},
+          child: Text(""+tst['nombre'])
+        ),
 
     )
     );
@@ -78,16 +79,14 @@ class MyApp extends StatelessWidget {
 
                 child: Row(
                   children: [
-                    Tarea(tareaejemplo), //!!!---------
-                    /*
-
+                    
                     if(tarea['done'])
                       Icon(Icons.done)
                     else
                       Icon(Icons.clear),
                     Text("  "+tarea['nombre']),
 
-                     */
+
                   ],
                 )
               )
