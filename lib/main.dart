@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
-  var tarea = { "nombre": "Hola soy una tarea", "done": true};
+  var tarea = { "nombre": "Hola soy una tarea", "done": false};
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
