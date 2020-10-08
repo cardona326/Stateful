@@ -1,7 +1,50 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+
 void main() => runApp(MyApp());
+
+//-------------------------------------------
+
+class Tarea extends StatefulWidget {
+
+  var laTarea;
+  Tarea(t) {
+    print("constructor de la tarea" + t['nombre']);
+    this.laTarea = t;
+  }
+  @override
+  State<Tarea> createState() {
+    print("Create state");
+    return new TareaState(laTarea);
+  }
+}
+
+
+class TareaState extends State<Tarea>{
+
+  var tst;
+  TareaState(ts){
+    this.tst = ts;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Container(
+        padding: EdgeInsets.only(left:20),
+        child: Text(tst["nombre"].toString() )
+    );
+  }
+}
+
+
+//----------------------------------------------
+
 class MyApp extends StatelessWidget {
-  var tarea = { "nombre": "Hola soy una tarea", "done": false};
+
+  var tareaejemplo = { "nombre": "Hola soy una tarea", "done": false};
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,11 +62,16 @@ class MyApp extends StatelessWidget {
 
                 child: Row(
                   children: [
+                    Tarea(tareaejemplo), //!!!---------
+                    /*
+
                     if(tarea['done'])
                       Icon(Icons.done)
                     else
                       Icon(Icons.clear),
                     Text("  "+tarea['nombre']),
+
+                     */
                   ],
                 )
               )
