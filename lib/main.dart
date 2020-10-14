@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+
 void main() => runApp(MyApp());
 
 //-------------------------------------------
@@ -32,7 +33,7 @@ class TareaState extends State<Tarea>{
     print("click");
     setState( () {
       tst['done'] = !tst['done'];
-    };
+    });
   }
 
   @override
@@ -41,16 +42,18 @@ class TareaState extends State<Tarea>{
     return Container(
         padding: EdgeInsets.only(left:20),
         child: Row(
-        if(tarea['done'])
-          Icon(Icons.done)
-        else
-          Icon(Icons.clear),
-        FlatButton(
-          onPressed: (){_click;},
-          child: Text(""+tst['nombre'])
-        ),
+          if(tarea['done'])
+            Icon(Icons.done),
+          else
+            Icon(Icons.clear),
 
-    )
+          FlatButton(
+            onPressed: (){_click;},
+            child: Text(tarea['nombre'])
+                     //("  "+tst['nombre'])
+          ),
+
+        ),
     );
   }
 }
@@ -60,7 +63,19 @@ class TareaState extends State<Tarea>{
 
 class MyApp extends StatelessWidget {
 
-  var tareaejemplo = { "nombre": "Hola soy una tarea", "done": false};
+  //var tareaejemplo = { "nombre": "Hola soy una tarea", "done": true};
+  var tareas = [
+    {'nombre': "Tarea1", "done": true},
+    {'nombre': "Tarea2", "done": true},
+    {'nombre': "Tarea3", "done": true},
+    {'nombre': "Tarea4", "done": true},
+    {'nombre': "Tarea5", "done": true},
+    {'nombre': "Tarea6", "done": true},
+    {'nombre': "Tarea7", "done": true},
+    {'nombre': "Tarea8", "done": true},
+    {'nombre': "Tarea9", "done": true},
+    {'nombre': "Tarea10", "done": true},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -70,28 +85,37 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Welcome to Flutters'),
         ),
-        body: Center(
-            child: Container (
+        body: ListView(
+            /*child: Container (
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-
+/*
                 child: Row(
                   children: [
-                    
+
                     if(tarea['done'])
                       Icon(Icons.done)
                     else
                       Icon(Icons.clear),
-                    Text("  "+tarea['nombre']),
+                    Text("  "+tarea['nombre']),*/
 
+                      child: Column(
+                        children: <Widget>[
+                          for(var m in tarea)
+                            Text(m['text'].toString() )
+                        ],
+                      ),
+                  //],
+                )*/
 
-                  ],
-                )
+          children: <Widget>[
+            for(var t in tareas) new Tarea(t)
+          ],
+
               )
             ),
-          ),
-      );
+          );
   }
 }
